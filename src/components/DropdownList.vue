@@ -47,14 +47,34 @@ export default {
 <style lang="scss" scoped>
 .dropdown-container {
   background: chartreuse;
+  width: 125px;
 }
 
 .dropdown-display {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  position: relative;
 }
 
 .dropdown-items-container {
   position: absolute;
+  width: 125px;
+}
+
+.dropdown-item {
+  background-color: yellow;
+  max-width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  border: solid 1px black;
+  border-top: none;
+  &:first-child {
+    border: solid 1px black;
+  }
+  &:hover {
+    background-color: yellowgreen;
+  }
 }
 </style>

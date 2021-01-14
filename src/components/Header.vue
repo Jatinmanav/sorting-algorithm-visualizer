@@ -1,12 +1,12 @@
 <template>
   <div class="header">
     <div class="logo">SAVisualizer</div>
-    <div class="sorting-options">
-      <DropdownList />
-      <button class="header-button">Visualize</button>
-      <button class="header-button">Shuffle</button>
-      <label> Speed </label>
-      <input type="range" />
+    <div class="sorting-options-container">
+      <DropdownList class="sorting-option" />
+      <button class="header-button sorting-option">Visualize</button>
+      <button class="header-button sorting-option">Shuffle</button>
+      <label class="sorting-option"> Speed </label>
+      <input class="sorting-option" type="range" />
     </div>
   </div>
 </template>
@@ -33,8 +33,13 @@ export default {
   padding: 1em 5%;
 }
 
-.sorting-options {
+.sorting-options-container {
   display: flex;
+  align-items: center;
+}
+
+.sorting-option {
+  margin: 0.5em;
 }
 
 .header-button {
