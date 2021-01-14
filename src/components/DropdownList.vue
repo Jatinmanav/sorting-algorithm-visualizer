@@ -1,7 +1,8 @@
 <template>
   <div class="dropdown-container">
     <div class="dropdown-display" @click="toggleDropdown">
-      {{ selected }}
+      <p>{{ selected }}</p>
+      <DropdownIcon fillColor="#000000" />
     </div>
     <div class="dropdown-items-container" v-if="open">
       <div
@@ -16,6 +17,8 @@
 </template>
 
 <script>
+import DropdownIcon from '../assets/DropdownIcon.vue';
+
 export default {
   name: 'DropdownList',
   data() {
@@ -35,12 +38,20 @@ export default {
       this.open = !this.open;
     },
   },
+  components: {
+    DropdownIcon,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .dropdown-container {
   background: chartreuse;
+}
+
+.dropdown-display {
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-items-container {
