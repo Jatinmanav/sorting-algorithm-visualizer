@@ -2,7 +2,7 @@
   <div class="dropdown-container">
     <div class="dropdown-display" @click="toggleDropdown">
       <p>{{ selected }}</p>
-      <DropdownIcon fillColor="#000000" />
+      <DropdownIcon fillColor="#000000" class="dropdown-icon" />
     </div>
     <div class="dropdown-items-container" v-if="open">
       <div
@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .dropdown-container {
   background: chartreuse;
-  width: 125px;
+  position: relative;
 }
 
 .dropdown-display {
@@ -55,12 +55,15 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0.5em;
-  position: relative;
+}
+
+.dropdown-icon {
+  cursor: pointer;
 }
 
 .dropdown-items-container {
   position: absolute;
-  width: 125px;
+  width: 100%;
 }
 
 .dropdown-item {

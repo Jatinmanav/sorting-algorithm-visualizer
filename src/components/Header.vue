@@ -2,11 +2,15 @@
   <div class="header">
     <div class="logo">SAVisualizer</div>
     <div class="sorting-options-container">
-      <DropdownList class="sorting-option" />
-      <button class="header-button sorting-option">Visualize</button>
-      <button class="header-button sorting-option">Shuffle</button>
-      <label class="sorting-option"> Speed </label>
-      <input class="sorting-option" type="range" />
+      <DropdownList class="dropdown-list sorting-option" />
+      <div>
+        <button class="header-button sorting-option">Visualize</button>
+        <button class="header-button sorting-option">Shuffle</button>
+      </div>
+      <div class="sorting-speed-slider">
+        <label class="sorting-option"> Speed </label>
+        <input class="sorting-option" type="range" />
+      </div>
     </div>
   </div>
 </template>
@@ -31,11 +35,13 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 1em 5%;
+  align-items: center;
 }
 
 .sorting-options-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .sorting-option {
@@ -46,5 +52,9 @@ export default {
   outline: none;
   border: 1px blue solid;
   background-color: green;
+  cursor: pointer;
+  &:hover {
+    background-color: greenyellow;
+  }
 }
 </style>

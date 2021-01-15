@@ -14,11 +14,6 @@ export default {
 </script>
 
 <style lang="scss">
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
 body,
 h1,
 h2,
@@ -43,29 +38,9 @@ body {
   line-height: 1.5;
 }
 
-ul[class],
-ol[class] {
-  list-style: none;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
 img {
   max-width: 100%;
   display: block;
-}
-
-article > * + * {
-  margin-top: 1em;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
