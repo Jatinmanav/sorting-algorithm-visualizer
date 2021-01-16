@@ -1,0 +1,84 @@
+<template>
+  <div class="dropdown-container">
+    <div class="dropdown-display" @click="toggleDropdown">
+      <p>{{ selected }}</p>
+      <DropdownIcon fillColor="#000000" class="dropdown-icon" />
+    </div>
+    <div class="dropdown-items-container" v-if="open">
+      <div
+        class="dropdown-item"
+        v-bind:key="algorithm.id"
+        v-for="algorithm in algorithms"
+      >
+        {{ algorithm.name }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import DropdownIcon from '../assets/DropdownIcon.vue';
+
+export default {
+  name: 'AlgorithmDropdownList',
+  data() {
+    return {
+      open: false,
+      selected: 'Bubble Sort',
+      algorithms: [
+        { id: 1, name: 'Bubble Sort' },
+        { id: 2, name: 'Quick Sort' },
+        { id: 3, name: 'Merge Sort' },
+      ],
+    };
+  },
+  methods: {
+    toggleDropdown() {
+      console.log('Clicked');
+      this.open = !this.open;
+    },
+  },
+  components: {
+    DropdownIcon,
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.dropdown-container {
+  background: chartreuse;
+  position: relative;
+  border-radius: 10px;
+}
+
+.dropdown-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+
+.dropdown-icon {
+  cursor: pointer;
+}
+
+.dropdown-items-container {
+  position: absolute;
+  width: 100%;
+}
+
+.dropdown-item {
+  background-color: yellow;
+  max-width: 100%;
+  text-align: center;
+  padding: 0.5em;
+  border: solid 1px black;
+  border-top: none;
+  &:first-child {
+    border: solid 1px black;
+  }
+  &:hover {
+    background-color: yellowgreen;
+  }
+}
+</style>

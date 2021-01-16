@@ -1,22 +1,20 @@
 <template>
   <div class="header">
-    <div class="logo">SAVisualizer</div>
+    <div class="logo">SortVis</div>
     <div class="sorting-options-container">
-      <DropdownList class="dropdown-list sorting-option" />
+      <AlgorithmDropdownList class="dropdown-list sorting-option" />
       <div>
         <button class="header-button sorting-option">Visualize</button>
         <button class="header-button sorting-option">Shuffle</button>
       </div>
-      <div class="sorting-speed-slider">
-        <label class="sorting-option"> Speed </label>
-        <input class="sorting-option" type="range" />
-      </div>
+      <SpeedDropdownList class="dropdown-list sorting-option" />
     </div>
   </div>
 </template>
 
 <script>
-import DropdownList from './DropdownList.vue';
+import AlgorithmDropdownList from './AlgorithmDropdownList.vue';
+import SpeedDropdownList from './SpeedDropdownList.vue';
 
 export default {
   name: 'Header',
@@ -24,7 +22,8 @@ export default {
     msg: String,
   },
   components: {
-    DropdownList,
+    AlgorithmDropdownList,
+    SpeedDropdownList,
   },
 };
 </script>
@@ -51,6 +50,8 @@ export default {
 .header-button {
   outline: none;
   border: 1px blue solid;
+  padding: 1em;
+  border-radius: 10px;
   background-color: green;
   cursor: pointer;
   &:hover {

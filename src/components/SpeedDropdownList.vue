@@ -20,15 +20,15 @@
 import DropdownIcon from '../assets/DropdownIcon.vue';
 
 export default {
-  name: 'DropdownList',
+  name: 'SpeedDropdownList',
   data() {
     return {
       open: false,
-      selected: 'Bubble Sort',
+      selected: '1x',
       algorithms: [
-        { id: 1, name: 'Bubble Sort' },
-        { id: 2, name: 'Quick Sort' },
-        { id: 3, name: 'Merge Sort' },
+        { id: 1, name: '0.5x' },
+        { id: 2, name: '2x' },
+        { id: 3, name: '4x' },
       ],
     };
   },
@@ -48,6 +48,7 @@ export default {
 .dropdown-container {
   background: chartreuse;
   position: relative;
+  border-radius: 10px;
 }
 
 .dropdown-display {
