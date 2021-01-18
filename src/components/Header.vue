@@ -18,9 +18,6 @@ import SpeedDropdownList from './SpeedDropdownList.vue';
 
 export default {
   name: 'Header',
-  props: {
-    msg: String,
-  },
   components: {
     AlgorithmDropdownList,
     SpeedDropdownList,
@@ -30,11 +27,17 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  background-color: red;
+  background-color: var(--header-color);
   display: flex;
   justify-content: space-between;
   padding: 1em 5%;
   align-items: center;
+}
+
+.logo {
+  color: var(--logo-color);
+  font-size: 1.5em;
+  font-family: Monsterrat;
 }
 
 .sorting-options-container {
@@ -49,13 +52,15 @@ export default {
 
 .header-button {
   outline: none;
-  border: 1px blue solid;
-  padding: 1em;
+  border: none;
+  padding: 0.7em;
+  font-size: 1em;
   border-radius: 10px;
-  background-color: green;
+  background-color: var(--button-color);
   cursor: pointer;
+  transition: background-color 250ms;
   &:hover {
-    background-color: greenyellow;
+    background-color: var(--button-hover-color);
   }
 }
 </style>

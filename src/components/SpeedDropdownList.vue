@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     toggleDropdown() {
-      console.log('Clicked');
       this.open = !this.open;
     },
   },
@@ -46,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .dropdown-container {
-  background: chartreuse;
+  background: var(--button-color);
   position: relative;
   border-radius: 10px;
 }
@@ -56,6 +55,12 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0.5em;
+  border-radius: 10px;
+  transition: background-color 250ms;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--button-hover-color);
+  }
 }
 
 .dropdown-icon {
@@ -74,11 +79,13 @@ export default {
   padding: 0.5em;
   border: solid 1px black;
   border-top: none;
+  cursor: pointer;
+  transition: background-color 250ms;
   &:first-child {
     border: solid 1px black;
   }
   &:hover {
-    background-color: yellowgreen;
+    background-color: var(--button-hover-color);
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <Header msg="Header" />
+  <Header />
 </template>
 
 <script>
@@ -14,6 +14,15 @@ export default {
 </script>
 
 <style lang="scss">
+html[data-theme="light"] {
+  --header-color: #6c7479;
+  --button-color: #b9d9de;
+  --button-hover-color: #82bbc4;
+  --logo-color: #ffffff;
+  --background-color: #ecf5f6;
+  font-family: Monsterrat, Arial, Helvetica, sans-serif;
+}
+
 body,
 h1,
 h2,
