@@ -66,10 +66,11 @@ export default {
 .dropdown-items-container {
   position: absolute;
   width: 100%;
+  margin-top: 0.5em;
 }
 
 .dropdown-item {
-  background-color: yellow;
+  background-color: var(--button-color);
   max-width: 100%;
   text-align: center;
   padding: 0.5em;
@@ -79,6 +80,12 @@ export default {
   cursor: pointer;
   &:first-child {
     border: solid 1px black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   &:hover {
     background-color: var(--button-hover-color);
