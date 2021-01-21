@@ -1,7 +1,11 @@
 <template>
   <div class="dropdown-container">
-    <div class="dropdown-display" @click="toggleDropdown">
-      <p>{{ selected }}</p>
+    <div
+      class="dropdown-display"
+      @click="toggleDropdown"
+      :style="dropdownWidth"
+    >
+      <p>{{ selectedValue }}</p>
       <DropdownIcon fillColor="#000000" class="dropdown-icon" />
     </div>
     <div class="dropdown-items-container" v-if="open">
@@ -9,6 +13,7 @@
         class="dropdown-item"
         v-bind:key="algorithm.id"
         v-for="algorithm in algorithms"
+        @click="selectDropdownItem(algorithm)"
       >
         {{ algorithm.name }}
       </div>
@@ -20,21 +25,29 @@
 import DropdownIcon from '../assets/DropdownIcon.vue';
 
 export default {
-  name: 'AlgorithmDropdownList',
+  name: 'DropdownList',
+  props: { options: { type: Array, required: true }, width: { type: String, required: true } },
   data() {
     return {
       open: false,
-      selected: 'Bubble Sort',
-      algorithms: [
-        { id: 1, name: 'Bubble Sort' },
-        { id: 2, name: 'Quick Sort' },
-        { id: 3, name: 'Merge Sort' },
-      ],
+      algorithms: this.options,
+      selected: 0,
     };
   },
   methods: {
     toggleDropdown() {
       this.open = !this.open;
+    },
+    selectDropdownItem(algorithm) {
+      this.selected = algorithm.id - 1;
+    },
+  },
+  computed: {
+    selectedValue() {
+      return this.options[this.selected].name;
+    },
+    dropdownWidth() {
+      return `min-width: ${this.width};`;
     },
   },
   components: {

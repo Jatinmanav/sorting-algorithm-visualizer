@@ -2,25 +2,40 @@
   <div class="header">
     <div class="logo">SortVis</div>
     <div class="sorting-options-container">
-      <AlgorithmDropdownList class="dropdown-list sorting-option" />
+      <DropdownList
+        class="dropdown-list sorting-option"
+        :options="[
+          { id: 1, name: 'Quick Sort' },
+          { id: 2, name: 'Merge Sort' },
+          { id: 3, name: 'Bubble Sort' },
+        ]"
+        width="125px"
+      />
       <div>
         <button class="header-button sorting-option">Visualize</button>
         <button class="header-button sorting-option">Shuffle</button>
       </div>
-      <SpeedDropdownList class="dropdown-list sorting-option" />
+      <DropdownList
+        class="dropdown-list sorting-option"
+        :options="[
+          { id: 1, name: '0.5x' },
+          { id: 2, name: '1x' },
+          { id: 3, name: '2x' },
+          { id: 4, name: '4x' },
+        ]"
+        width="50px"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import AlgorithmDropdownList from './AlgorithmDropdownList.vue';
-import SpeedDropdownList from './SpeedDropdownList.vue';
+import DropdownList from './DropdownList.vue';
 
 export default {
   name: 'Header',
   components: {
-    AlgorithmDropdownList,
-    SpeedDropdownList,
+    DropdownList,
   },
 };
 </script>
