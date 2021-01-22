@@ -48,6 +48,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  background-color: var(--background-color);
 }
 
 img {

@@ -40,6 +40,7 @@ export default {
     },
     selectDropdownItem(algorithm) {
       this.selected = algorithm.id - 1;
+      this.open = false;
     },
   },
   computed: {
