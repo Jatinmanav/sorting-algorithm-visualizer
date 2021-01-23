@@ -12,8 +12,15 @@
         width="125px"
       />
       <div>
-        <button class="header-button sorting-option">Visualize</button>
-        <button class="header-button sorting-option">Shuffle</button>
+        <button
+          class="header-button sorting-option"
+          @click="visualizeAlgorithm"
+        >
+          Visualize
+        </button>
+        <button class="header-button sorting-option" @click="shuffleArray">
+          Shuffle
+        </button>
       </div>
       <DropdownList
         class="dropdown-list sorting-option"
@@ -36,6 +43,11 @@ export default {
   name: 'Header',
   components: {
     DropdownList,
+  },
+  methods: {
+    shuffleArray() {
+      this.$store.commit('shuffleArray');
+    },
   },
 };
 </script>
