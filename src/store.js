@@ -17,6 +17,11 @@ export default createStore({
           state.elementArray[j], state.elementArray[i]];
       }
     },
+    swapIndices(state, payload) {
+      const tempStore = state.elementArray[payload.source];
+      state.elementArray[payload.source] = state.elementArray[payload.target];
+      state.elementArray[payload.target] = tempStore;
+    },
   },
   getters: {
     getArray(state) {

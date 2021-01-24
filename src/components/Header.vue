@@ -48,6 +48,9 @@ export default {
     shuffleArray() {
       this.$store.commit('shuffleArray');
     },
+    visualizeAlgorithm() {
+      this.$store.commit('swapIndices', { source: 0, target: 5 });
+    },
   },
 };
 </script>

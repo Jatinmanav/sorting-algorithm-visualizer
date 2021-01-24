@@ -1,18 +1,20 @@
 <template>
   <div class="display-container">
-    <div
-      class="array-item"
-      :style="
-        'height:' +
-        item * heightMultiplier +
-        'vh;' +
-        'width:' +
-        itemWidth +
-        'vw;'
-      "
-      :key="item"
-      v-for="item in getArray"
-    ></div>
+    <transition-group name="element-array-transition">
+      <div
+        class="array-item"
+        :style="
+          'height:' +
+          item * heightMultiplier +
+          'vh;' +
+          'width:' +
+          itemWidth +
+          'vw;'
+        "
+        :key="item"
+        v-for="item in getArray"
+      ></div>
+    </transition-group>
   </div>
 </template>
 
@@ -44,6 +46,10 @@ export default {
   align-items: baseline;
   justify-content: center;
   margin-top: 10vh;
+}
+
+.element-array-transition-move {
+  transition: transform 0.8s ease;
 }
 
 .array-item {
