@@ -9,6 +9,7 @@
           { id: 2, name: 'Merge Sort' },
           { id: 3, name: 'Bubble Sort' },
         ]"
+        dropdownType="algorithm"
         width="125px"
       />
       <div>
@@ -30,6 +31,7 @@
           { id: 3, name: '2x' },
           { id: 4, name: '4x' },
         ]"
+        dropdownType="visualizeSpeed"
         width="50px"
       />
     </div>

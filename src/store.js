@@ -4,6 +4,8 @@ export default createStore({
   state: {
     elementArray: [],
     arraySize: 20,
+    visulaizeSpeed: 0.5,
+    algorithm: 0,
   },
   mutations: {
     shuffleArray(state) {
@@ -21,6 +23,12 @@ export default createStore({
       const tempStore = state.elementArray[payload.source];
       state.elementArray[payload.source] = state.elementArray[payload.target];
       state.elementArray[payload.target] = tempStore;
+    },
+    setAlgorithm(state, payload) {
+      state.algorithm = payload;
+    },
+    setVisualizeSpeed(state, payload) {
+      state.visulaizeSpeed = payload;
     },
   },
   getters: {

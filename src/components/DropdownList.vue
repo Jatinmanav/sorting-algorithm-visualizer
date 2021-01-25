@@ -11,11 +11,11 @@
     <div class="dropdown-items-container" v-if="open">
       <div
         class="dropdown-item"
-        v-bind:key="algorithm.id"
-        v-for="algorithm in algorithms"
-        @click="selectDropdownItem(algorithm)"
+        v-bind:key="option.id"
+        v-for="option in dropdownOptions"
+        @click="selectDropdownItem(option)"
       >
-        {{ algorithm.name }}
+        {{ option.name }}
       </div>
     </div>
   </div>
@@ -26,11 +26,15 @@ import DropdownIcon from '../assets/DropdownIcon.vue';
 
 export default {
   name: 'DropdownList',
-  props: { options: { type: Array, required: true }, width: { type: String, required: true } },
+  props: {
+    options: { type: Array, required: true },
+    width: { type: String, required: true },
+    dropdownType: { type: String, required: true },
+  },
   data() {
     return {
       open: false,
-      algorithms: this.options,
+      dropdownOptions: this.options,
       selected: 0,
     };
   },
@@ -38,9 +42,14 @@ export default {
     toggleDropdown() {
       this.open = !this.open;
     },
-    selectDropdownItem(algorithm) {
-      this.selected = algorithm.id - 1;
+    selectDropdownItem(option) {
+      this.selected = option.id - 1;
       this.open = false;
+      if (this.dropdownType === 'algorithm') {
+        this.$store.commit('setAlgorithm', option.id - 1);
+      } else if (this.dropdownType === 'visualizeSpeed') {
+        this.$store.commit('setVisualizeSpeed', option.id - 1);
+      }
     },
   },
   computed: {
