@@ -49,7 +49,7 @@ export default {
 }
 
 .element-array-transition-move {
-  transition: transform 0.8s ease;
+  transition: transform 0.1s ease;
 }
 
 .array-item {
