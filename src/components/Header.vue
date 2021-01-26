@@ -40,6 +40,7 @@
 
 <script>
 import DropdownList from './DropdownList.vue';
+import bubbleSort from '../algorithms/bubbleSort';
 
 export default {
   name: 'Header',
@@ -51,8 +52,15 @@ export default {
       this.$store.commit('shuffleArray');
     },
     visualizeAlgorithm() {
-      this.$store.commit('swapIndices', { source: 0, target: 5 });
+      const result = this.bubbleSort(this.$store.getters.getArray);
+      result.forEach((item) => {
+        this.swapValues(item[0], item[1], item[2]);
+      });
     },
+    swapValues(source, target, count) {
+      this.$store.dispatch('swapWithTimeOut', { source, target, count });
+    },
+    bubbleSort,
   },
 };
 </script>

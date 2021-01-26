@@ -4,8 +4,19 @@ export default createStore({
   state: {
     elementArray: [],
     arraySize: 20,
-    visulaizeSpeed: 0.5,
+    visulaizeSpeed: 500,
     algorithm: 0,
+  },
+  getters: {
+    getArray(state) {
+      return state.elementArray;
+    },
+    getHeightMultiplier(state) {
+      return 50 / state.arraySize;
+    },
+    getItemWidth(state) {
+      return 80 / state.arraySize;
+    },
   },
   mutations: {
     shuffleArray(state) {
@@ -31,15 +42,11 @@ export default createStore({
       state.visulaizeSpeed = payload;
     },
   },
-  getters: {
-    getArray(state) {
-      return state.elementArray;
-    },
-    getHeightMultiplier(state) {
-      return 50 / state.arraySize;
-    },
-    getItemWidth(state) {
-      return 80 / state.arraySize;
+  actions: {
+    swapWithTimeOut({ commit, state }, payload) {
+      setTimeout(() => {
+        commit('swapIndices', { source: payload.source, target: payload.target });
+      }, state.visulaizeSpeed * payload.count);
     },
   },
 });
