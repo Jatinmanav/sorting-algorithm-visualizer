@@ -1,25 +1,9 @@
-# sorting-algorithm-visualizer
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 # Sorting Algorithm Visualizer
+
+Sorting Algorithm Visualizer built using Vue and Vuex.
+
+## Dependencies
+
+- [Vue](https://v3.vuejs.org/)
+- [Vuex](https://next.vuex.vuejs.org/)
+- [SASS](https://sass-lang.com/)
