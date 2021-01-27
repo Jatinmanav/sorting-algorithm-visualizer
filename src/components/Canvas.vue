@@ -41,11 +41,14 @@ export default {
 <style lang="scss" scoped>
 .display-container {
   margin: auto;
-  background-color: green;
+  background-color: var(--header-color);
   display: flex;
   align-items: baseline;
   justify-content: center;
   margin-top: 10vh;
+  padding-top: 10vh;
+  width: 90%;
+  border-radius: 15px;
 }
 
 .element-array-transition-move {
@@ -54,7 +57,9 @@ export default {
 
 .array-item {
   min-height: 10px;
-  background-color: red;
+  background-color: var(--button-color);
   border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 </style>

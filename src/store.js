@@ -4,7 +4,7 @@ export default createStore({
   state: {
     elementArray: [],
     arraySize: 20,
-    visulaizeSpeed: 200,
+    visulaizeSpeed: 800,
     algorithm: 0,
   },
   getters: {

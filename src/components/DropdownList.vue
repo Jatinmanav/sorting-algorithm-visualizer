@@ -46,9 +46,9 @@ export default {
       this.selected = option.id - 1;
       this.open = false;
       if (this.dropdownType === 'algorithm') {
-        this.$store.commit('setAlgorithm', option.id - 1);
+        this.$store.commit('setAlgorithm', option.value);
       } else if (this.dropdownType === 'visualizeSpeed') {
-        this.$store.commit('setVisualizeSpeed', option.id - 1);
+        this.$store.commit('setVisualizeSpeed', option.value);
       }
     },
   },
