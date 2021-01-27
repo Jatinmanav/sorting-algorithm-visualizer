@@ -6,16 +6,26 @@ export default createStore({
     arraySize: 20,
     visulaizeSpeed: 800,
     algorithm: 0,
+    lock: false,
   },
   getters: {
     getArray(state) {
       return state.elementArray;
+    },
+    getAlgorithm(state) {
+      return state.algorithm;
     },
     getHeightMultiplier(state) {
       return 50 / state.arraySize;
     },
     getItemWidth(state) {
       return 80 / state.arraySize;
+    },
+    getVisualizeSpeed(state) {
+      return state.visulaizeSpeed;
+    },
+    getLockState(state) {
+      return state.lock;
     },
   },
   mutations: {
@@ -40,6 +50,12 @@ export default createStore({
     },
     setVisualizeSpeed(state, payload) {
       state.visulaizeSpeed = payload;
+    },
+    lockCanvas(state) {
+      state.lock = true;
+    },
+    unlockCanvas(state) {
+      state.lock = false;
     },
   },
   actions: {

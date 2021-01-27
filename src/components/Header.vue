@@ -41,6 +41,7 @@
 <script>
 import DropdownList from './DropdownList.vue';
 import bubbleSort from '../algorithms/bubbleSort';
+import quickSort from '../algorithms/quickSort';
 
 export default {
   name: 'Header',
@@ -49,18 +50,33 @@ export default {
   },
   methods: {
     shuffleArray() {
-      this.$store.commit('shuffleArray');
+      if (this.$store.getters.getLockState === false) {
+        this.$store.commit('shuffleArray');
+      }
     },
     visualizeAlgorithm() {
-      const result = this.bubbleSort(this.$store.getters.getArray);
-      result.forEach((item) => {
-        this.swapValues(item[0], item[1], item[2]);
-      });
+      if (this.$store.getters.getLockState === false) {
+        let result;
+        if (this.$store.getters.getAlgorithm === 0) {
+          result = this.quickSort(this.$store.getters.getArray);
+        } else {
+          result = this.bubbleSort(this.$store.getters.getArray);
+        }
+        const lockDuration = result.length * this.$store.getters.getVisualizeSpeed;
+        this.$store.commit('lockCanvas');
+        result.forEach((item) => {
+          this.swapValues(item[0], item[1], item[2]);
+        });
+        setTimeout(() => {
+          this.$store.commit('unlockCanvas');
+        }, lockDuration);
+      }
     },
     swapValues(source, target, count) {
       this.$store.dispatch('swapWithTimeOut', { source, target, count });
     },
     bubbleSort,
+    quickSort,
   },
 };
 </script>
