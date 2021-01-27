@@ -6,8 +6,7 @@
         class="dropdown-list sorting-option"
         :options="[
           { id: 1, name: 'Quick Sort', value: 0 },
-          { id: 2, name: 'Merge Sort', value: 1 },
-          { id: 3, name: 'Bubble Sort', value: 2 },
+          { id: 2, name: 'Bubble Sort', value: 1 },
         ]"
         dropdownType="algorithm"
         width="125px"
