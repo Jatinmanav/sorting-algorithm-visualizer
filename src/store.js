@@ -7,6 +7,7 @@ export default createStore({
     visulaizeSpeed: 800,
     algorithm: 0,
     lock: false,
+    view: 'canvas',
   },
   getters: {
     getArray(state) {
@@ -16,7 +17,11 @@ export default createStore({
       return state.algorithm;
     },
     getHeightMultiplier(state) {
-      return 50 / state.arraySize;
+      let maxHeight = 0;
+      state.elementArray.forEach((item) => {
+        if (item > maxHeight) maxHeight = item;
+      });
+      return 50 / maxHeight;
     },
     getItemWidth(state) {
       return 80 / state.arraySize;
@@ -27,12 +32,20 @@ export default createStore({
     getLockState(state) {
       return state.lock;
     },
+    getView(state) {
+      return state.view;
+    },
+    getAddElement(state) {
+      return state.addElement;
+    },
   },
   mutations: {
     shuffleArray(state) {
       state.elementArray = [];
-      for (let i = 1; i <= state.arraySize; i += 1) {
-        state.elementArray.push(i);
+      let count = 1;
+      while (count <= 20) {
+        state.elementArray.push(count);
+        count += 1;
       }
       for (let i = state.elementArray.length - 1; i > 0; i -= 1) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -45,6 +58,9 @@ export default createStore({
       state.elementArray[payload.source] = state.elementArray[payload.target];
       state.elementArray[payload.target] = tempStore;
     },
+    setView(state, payload) {
+      state.view = payload;
+    },
     setAlgorithm(state, payload) {
       state.algorithm = payload;
     },
@@ -56,6 +72,12 @@ export default createStore({
     },
     unlockCanvas(state) {
       state.lock = false;
+    },
+    toggleNewElement(state) {
+      state.addElement = !state.addElement;
+    },
+    addElement(state, payload) {
+      state.elementArray.push(payload);
     },
   },
   actions: {

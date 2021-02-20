@@ -5,6 +5,15 @@
       <DropdownList
         class="dropdown-list sorting-option"
         :options="[
+          { id: 1, name: 'Canvas View', value: 'canvas' },
+          { id: 2, name: 'List View', value: 'list' },
+        ]"
+        dropdownType="view"
+        width="125px"
+      />
+      <DropdownList
+        class="dropdown-list sorting-option"
+        :options="[
           { id: 1, name: 'Quick Sort', value: 0 },
           { id: 2, name: 'Bubble Sort', value: 1 },
         ]"

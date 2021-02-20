@@ -14,12 +14,12 @@ const partition = (array, low, high, result, count) => {
       i += 1;
       swapValues(array, i, j);
       if (i !== j) result.push([i, j, count.value]);
-      count.value += 1;
+      if (i !== j) count.value += 1;
     }
   }
   swapValues(array, i + 1, high);
   if (i + 1 !== high) result.push([i + 1, high, count.value]);
-  count.value += 1;
+  if (i + 1 !== high) count.value += 1;
   return i + 1;
 };
 
@@ -36,6 +36,7 @@ const quickSort = (array) => {
   const result = [];
   const count = { value: 0 };
   quickSortHelper(tempArray, 0, array.length - 1, result, count);
+  console.log(result);
   return result;
 };
 

@@ -1,17 +1,26 @@
 <template>
   <Header />
-  <Canvas />
+  <Canvas v-if="getView === 'canvas'" />
+  <List v-else-if="getView === 'list'" />
+  <NewElement />
 </template>
 
 <script>
 import Header from './components/Header.vue';
 import Canvas from './components/Canvas.vue';
+import List from './components/List.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
     Canvas,
+    List,
+  },
+  computed: {
+    getView() {
+      return this.$store.getters.getView;
+    },
   },
 };
 </script>

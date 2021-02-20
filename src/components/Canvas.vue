@@ -43,6 +43,7 @@ export default {
   margin: auto;
   background-color: var(--header-color);
   display: flex;
+  flex-direction: row;
   align-items: baseline;
   justify-content: center;
   margin-top: 10vh;
@@ -52,7 +53,7 @@ export default {
 }
 
 .element-array-transition-move {
-  transition: transform 0.1s ease;
+  transition: transform 0.5s ease;
 }
 
 .array-item {
