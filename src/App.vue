@@ -2,7 +2,6 @@
   <Header />
   <Canvas v-if="getView === 'canvas'" />
   <List v-else-if="getView === 'list'" />
-  <NewElement />
 </template>
 
 <script>

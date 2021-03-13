@@ -1,7 +1,7 @@
 <template>
-  <div class="display-container-list">
+  <div class="bg-gray-800 mx-auto py-5 my-24 max-w-7xl display-container-list">
     <transition-group name="element-array-transition-list">
-      <div :key="item" v-for="item in getArray" class="array-item-list">
+      <div :key="item" v-for="item in getArray" class="bg-gray-200 font-medium array-item-list">
         {{ item }}
       </div>
     </transition-group>
@@ -24,16 +24,10 @@ export default {
 
 <style lang="scss">
 .display-container-list {
-  margin: auto;
-  background-color: var(--header-color);
   display: flex;
   flex-direction: column;
   align-items: baseline;
   justify-content: center;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  padding: 2vh;
-  width: 90%;
   border-radius: 15px;
 }
 

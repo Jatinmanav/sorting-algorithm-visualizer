@@ -1,8 +1,8 @@
 <template>
-  <div class="display-container">
+  <div class="bg-gray-800 items-baseline mx-auto px-5 py-5 my-24 max-w-7xl display-container">
     <transition-group name="element-array-transition">
       <div
-        class="array-item"
+        class="bg-gray-200 rounded-xl array-item"
         :style="
           'height:' +
           item * heightMultiplier +
@@ -40,15 +40,9 @@ export default {
 
 <style lang="scss" scoped>
 .display-container {
-  margin: auto;
-  background-color: var(--header-color);
   display: flex;
   flex-direction: row;
-  align-items: baseline;
   justify-content: center;
-  margin-top: 10vh;
-  padding-top: 10vh;
-  width: 90%;
   border-radius: 15px;
 }
 
@@ -58,9 +52,6 @@ export default {
 
 .array-item {
   min-height: 10px;
-  background-color: var(--button-color);
   border: 1px solid black;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 </style>

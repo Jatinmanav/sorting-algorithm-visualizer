@@ -1,49 +1,76 @@
 <template>
-  <div class="header">
-    <div class="logo">SortVis</div>
-    <div class="sorting-options-container">
-      <DropdownList
-        class="dropdown-list sorting-option"
-        :options="[
-          { id: 1, name: 'Canvas View', value: 'canvas' },
-          { id: 2, name: 'List View', value: 'list' },
-        ]"
-        dropdownType="view"
-        width="125px"
-      />
-      <DropdownList
-        class="dropdown-list sorting-option"
-        :options="[
-          { id: 1, name: 'Quick Sort', value: 0 },
-          { id: 2, name: 'Bubble Sort', value: 1 },
-        ]"
-        dropdownType="algorithm"
-        width="125px"
-      />
-      <div>
-        <button
-          class="header-button sorting-option"
-          @click="visualizeAlgorithm"
-        >
-          Visualize
-        </button>
-        <button class="header-button sorting-option" @click="shuffleArray">
-          Shuffle
-        </button>
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="relative h-16">
+        <div class="flex items-center justify-between">
+          <div class="flex mx-auto sm:mx-0 py-5 justify-around">
+            <img
+              class="block lg:hidden cursor-pointer sm:cursor-auto h-8 w-auto"
+              :src="logo"
+              alt="Visualize"
+              @click="mobileMenuOpen = !mobileMenuOpen"
+            />
+            <img
+              class="hidden lg:block h-8 w-auto"
+              :src="logoText"
+              alt="Visualize"
+            />
+          </div>
+          <div class="hidden sm:flex flex-row space-x-4">
+            <DropdownList
+              class="dropdown-list sorting-option mb-2"
+              v-for="config in dropdownConfig"
+              :options="config.options"
+              :key="config.id"
+              :dropdownType="config.type"
+              :width="config.width"
+            />
+          </div>
+          <div class="hidden sm:flex space-x-4">
+            <div
+              @click="visualizeAlgorithm"
+              class="m-auto mb-1 cursor-pointer text-lg text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Visualize
+            </div>
+            <div
+              @click="shuffleArray"
+              class="m-auto mb-1 cursor-pointer text-lg text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Shuffle
+            </div>
+          </div>
+        </div>
       </div>
-      <DropdownList
-        class="dropdown-list sorting-option"
-        :options="[
-          { id: 1, name: '0.5x', value: 800 },
-          { id: 2, name: '1x', value: 400 },
-          { id: 3, name: '2x', value: 200 },
-          { id: 4, name: '4x', value: 100 },
-        ]"
-        dropdownType="visualizeSpeed"
-        width="50px"
-      />
     </div>
-  </div>
+
+    <div class="sm:hidden" id="mobile-menu">
+      <div v-if="mobileMenuOpen" class="px-2 pt-2 pb-3 space-y-1">
+        <DropdownList
+          class="dropdown-list sorting-option p-1 my-0"
+          v-for="config in dropdownConfig"
+          :options="config.options"
+          :key="config.id"
+          :dropdownType="config.type"
+          :width="config.width"
+        />
+        <div class="flex justify-evenly pt-5">
+          <div
+            @click="visualizeAlgorithm"
+            class="m-auto cursor-pointer text-lg text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Visualize
+          </div>
+          <div
+            @click="shuffleArray"
+            class="m-auto cursor-pointer text-lg text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Shuffle
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -55,6 +82,44 @@ export default {
   name: 'Header',
   components: {
     DropdownList,
+  },
+  data() {
+    return {
+      mobileMenuOpen: false,
+      dropdownConfig: [
+        {
+          id: 1,
+          options: [
+            { id: 1, name: 'Canvas View', value: 'canvas' },
+            { id: 2, name: 'List View', value: 'list' },
+          ],
+          type: 'view',
+          width: '150px',
+        },
+        {
+          id: 2,
+          options: [
+            { id: 1, name: 'Quick Sort', value: 0 },
+            { id: 2, name: 'Bubble Sort', value: 1 },
+          ],
+          type: 'algorithm',
+          width: '150px',
+        },
+        {
+          id: 3,
+          options: [
+            { id: 1, name: '0.5x', value: 800 },
+            { id: 2, name: '1x', value: 400 },
+            { id: 3, name: '2x', value: 200 },
+            { id: 4, name: '4x', value: 100 },
+          ],
+          type: 'visualizeSpeed',
+          width: '100px',
+        },
+      ],
+      logo: require('../assets/Logo.svg'),
+      logoText: require('../assets/LogoText.svg'),
+    };
   },
   methods: {
     shuffleArray() {
@@ -88,43 +153,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-.header {
-  background-color: var(--header-color);
-  display: flex;
-  justify-content: space-between;
-  padding: 1em 5%;
-  align-items: center;
-}
-
-.logo {
-  color: var(--logo-color);
-  font-size: 1.5em;
-  font-family: Monsterrat;
-}
-
-.sorting-options-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.sorting-option {
-  margin: 0.5em;
-}
-
-.header-button {
-  outline: none;
-  border: none;
-  padding: 0.7em;
-  font-size: 1em;
-  border-radius: 10px;
-  background-color: var(--button-color);
-  cursor: pointer;
-  transition: background-color 250ms;
-  &:hover {
-    background-color: var(--button-hover-color);
-  }
-}
-</style>
