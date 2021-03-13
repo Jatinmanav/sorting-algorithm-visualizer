@@ -6,4 +6,4 @@ Sorting Algorithm Visualizer built using Vue and Vuex.
 
 - [Vue](https://v3.vuejs.org/)
 - [Vuex](https://next.vuex.vuejs.org/)
-- [SASS](https://sass-lang.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
